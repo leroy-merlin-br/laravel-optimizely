@@ -1,0 +1,22 @@
+{
+    "name": "leroy-merlin-br/laravel-optimizely",
+    "description": "A Laravel wrapper for the Optimizely SDK",
+    "type": "library",
+    "require": {
+	"illuminate/config": "^6.1",
+        "illuminate/support": "^6.1",
+	"optimizely/optimizely-sdk": "^3.2"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^4.0",
+        "phpunit/phpunit": "^8.3",
+        "mockery/mockery": "^1.2"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "aleferreiranogueira",
+            "email": "ale.ferreiranogueira@gmail.com"
+        }
+    ]
+}
