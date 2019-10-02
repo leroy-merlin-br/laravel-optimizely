@@ -6,7 +6,6 @@ use App\Http\Requests\WebhookRequest;
 use Exception;
 use Illuminate\Contracts\Config\Repository;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class OptimizelyController extends BaseController
