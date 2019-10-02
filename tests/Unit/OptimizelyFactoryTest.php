@@ -1,13 +1,10 @@
 <?php
 namespace Tests\Unit;
 
-use Illuminate\Contracts\Foundation\Application as ApplicationInterface;
-use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Storage;
 use LeroyMerlin\Optimizely\OptimizelyFactory;
 use Optimizely\Optimizely;
 use Orchestra\Testbench\TestCase;
-use Mockery;
 
 class OptimizelyFactoryTest extends TestCase
 {
@@ -15,7 +12,6 @@ class OptimizelyFactoryTest extends TestCase
     {
         //Set
         Storage::fake();
-        $this->instance(Optimizely::class, Mockery::mock(Optimizely::class));
 
         $factory = new OptimizelyFactory();
 
