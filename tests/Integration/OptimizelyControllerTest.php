@@ -20,7 +20,7 @@ class OptimizelyControllerTest extends TestCase
             'event' => 'project.datafile_updated',
             'data' => [
                 'revision' => 1,
-                'origin_url' => 'https =>//optimizely.s3.amazonaws.com/json/1234.json',
+                'origin_url' => 'https://optimizely.s3.amazonaws.com/json/1234.json',
                 'cdn_url' => '../fixtures/invalid_datafile',
                 'environment' => 'Production'
             ]
@@ -47,7 +47,7 @@ class OptimizelyControllerTest extends TestCase
             'event' => 'project.datafile_updated',
             'data' => [
                 'revision' => 1,
-                'origin_url' => 'https =>//optimizely.s3.amazonaws.com/json/1234.json',
+                'origin_url' => 'https://optimizely.s3.amazonaws.com/json/1234.json',
                 'cdn_url' => __DIR__ . '/../fixtures/datafile',
                 'environment' => 'Production'
             ]
