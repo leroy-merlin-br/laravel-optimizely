@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\WebhookRequest;
 use Exception;
 use Illuminate\Contracts\Config\Repository;
 use Illuminate\Http\JsonResponse;
@@ -20,16 +21,10 @@ class OptimizelyController extends BaseController
         $this->config = $config;
     }
 
-    public function webhook(Request $request): JsonResponse
+    public function webhook(WebhookRequest $request): JsonResponse
     {
-        $datafileUrl = $request->input('data')['cdn_url'];
-
-        if (!$datafileUrl) {
-            return response()->json(['Could not get datafile URL'], 400);
-        }
-
         try {
-            $datafileContents = file_get_contents($datafileUrl);
+            $datafileContents = file_get_contents($request->getDatafileUrl());
         } catch (Exception $e) {
             return response()->json(['Could not get datafile contents'], 400);
         }
