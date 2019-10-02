@@ -14,13 +14,13 @@
   },
   "require": {
     "php": ">7.1.0",
-    "illuminate/config": "~5.5.0 || ^6.0",
-    "illuminate/support": "~5.5.0 || ^6.0",
+    "illuminate/config": "^5.7.0 || ^6.0",
+    "illuminate/support": "^5.7.0 || ^6.0",
     "optimizely/optimizely-sdk": "^3.2"
   },
   "require-dev": {
     "orchestra/testbench": "^4.0",
-    "phpunit/phpunit": "^6.5 || ^8.3",
+    "phpunit/phpunit": "^8.3",
     "mockery/mockery": "^1.2"
   },
   "license": "MIT",
