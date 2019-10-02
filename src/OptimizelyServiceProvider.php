@@ -1,4 +1,5 @@
 <?php
+namespace App;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -11,7 +12,7 @@ class OptimizelyServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->publishes([
-            __DIR__.'/path/to/config/courier.php' => config_path('courier.php'),
+            __DIR__.'/config/optimizely.php' => config_path('optimizely.php'),
         ]);
 
         $this->loadRoutesFrom(__DIR__ . '/routes/routes.php');
