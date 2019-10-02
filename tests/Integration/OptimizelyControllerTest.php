@@ -13,17 +13,26 @@ class OptimizelyControllerTest extends TestCase
         return [OptimizelyServiceProvider::class];
     }
 
-    /**
-     * @dataProvider invalidPayloadProvider
-     */
-    public function test_should_try_to_get_datafile_url_and_fail(array $payload, int $responseCode, array $message): void
+    public function test_should_try_to_get_datafile_url_and_fail(): void
     {
+        $payload = [
+            'project_id' => 1234,
+            'timestamp' => 1468447113,
+            'event' => 'project.datafile_updated',
+            'data' => [
+                'revision' => 1,
+                'origin_url' => 'https =>//optimizely.s3.amazonaws.com/json/1234.json',
+                'cdn_url' => '../fixtures/invalid_datafile',
+                'environment' => 'Production'
+            ]
+        ];
+
         // Actions
         $response = $this->post('/webhooks/optimizely', $payload);
 
         // Assertions
-        $response->assertStatus($responseCode);
-        $response->assertJson($message);
+        $response->assertStatus(400);
+        $response->assertJson(['Could not get datafile contents']);
     }
 
     public function test_should_download_datafile_succesfully()
@@ -61,41 +70,5 @@ class OptimizelyControllerTest extends TestCase
         // Assertions
         $response->assertStatus(201);
 
-    }
-
-    public function invalidPayloadProvider()
-    {
-        return [
-            'No Datafile URL' => [
-                'payload' => [
-                    'project_id' => 1234,
-                    'timestamp' => 1468447113,
-                    'event' => 'project.datafile_updated',
-                    'data' => [
-                        'revision' => 1,
-                        'origin_url' => 'https =>//optimizely.s3.amazonaws.com/json/1234.json',
-                        'cdn_url' => '',
-                        'environment' => 'Production'
-                    ]
-                ],
-                'responseCode' => 400,
-                'responseMessage' => ['Could not get datafile URL']
-            ],
-            'Invalid Datafile' => [
-                'payload' => [
-                    'project_id' => 1234,
-                    'timestamp' => 1468447113,
-                    'event' => 'project.datafile_updated',
-                    'data' => [
-                        'revision' => 1,
-                        'origin_url' => 'https =>//optimizely.s3.amazonaws.com/json/1234.json',
-                        'cdn_url' => '../fixtures/invalid_datafile',
-                        'environment' => 'Production'
-                    ]
-                ],
-                'responseCode' => 400,
-                'responseMessage' => ['Could not get datafile contents']
-            ],
-        ];
     }
 }
