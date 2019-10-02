@@ -1,8 +1,7 @@
 <?php
+namespace LeroyMerlin\Optimizely\Http\Controllers;
 
-namespace App\Http\Controllers;
-
-use App\Http\Requests\WebhookRequest;
+use LeroyMerlin\Optimizely\Http\Requests\WebhookRequest;
 use Exception;
 use Illuminate\Contracts\Config\Repository;
 use Illuminate\Http\JsonResponse;

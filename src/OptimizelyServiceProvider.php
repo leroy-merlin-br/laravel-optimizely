@@ -1,5 +1,5 @@
 <?php
-namespace App;
+namespace LeroyMerlin\Optimizely;
 
 use Illuminate\Support\ServiceProvider;
 

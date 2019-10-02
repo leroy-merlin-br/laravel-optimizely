@@ -1,5 +1,5 @@
 <?php
-namespace App\Http\Requests;
+namespace LeroyMerlin\Optimizely\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 

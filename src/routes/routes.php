@@ -1,2 +1,2 @@
 <?php
-Route::post('/webhooks/optimizely', [\App\Http\Controllers\OptimizelyController::class, 'webhook']);
+Route::post('/webhooks/optimizely', [\LeroyMerlin\Optimizely\Http\Controllers\OptimizelyController::class, 'webhook']);

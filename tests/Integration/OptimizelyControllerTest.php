@@ -1,8 +1,7 @@
 <?php
-
 namespace Tests\Integration;
 
-use App\OptimizelyServiceProvider;
+use LeroyMerlin\Optimizely\OptimizelyServiceProvider;
 use Illuminate\Support\Facades\Storage;
 use Orchestra\Testbench\TestCase;
 
