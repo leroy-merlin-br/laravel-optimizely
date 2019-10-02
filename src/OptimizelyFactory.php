@@ -1,5 +1,4 @@
 <?php
-
 namespace LeroyMerlin\Optimizely;
 
 use Illuminate\Foundation\Application;
@@ -17,8 +16,10 @@ class OptimizelyFactory
      */
     public function __invoke(Application $app): Optimizely
     {
-        $filepath = Storage::disk($app['config']['optimizely']['disk'])->get($app['config']['optimizely']['path']);
+        $optimizelyConfig = $app['config']['optimizely'];
 
-        return new Optimizely(file_get_contents($filepath));
+        $file = Storage::disk($optimizelyConfig['disk'])->get($optimizelyConfig['filepath']);
+
+        return new Optimizely($file);
     }
 }
