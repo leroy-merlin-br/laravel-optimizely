@@ -1,9 +1,16 @@
 <?php
+namespace Tests\Integration;
 
+use App\OptimizelyServiceProvider;
 use Orchestra\Testbench\TestCase;
 
 class OptimizelyControllerTest extends TestCase
 {
+    protected function getPackageProviders($app)
+    {
+        return [OptimizelyServiceProvider::class];
+    }
+
     public function test_should_try_to_get_datafile_url_and_fail()
     {
         // Set
@@ -22,7 +29,7 @@ class OptimizelyControllerTest extends TestCase
         ];
 
         // Actions
-        $response = $this->post('/webhook/optimizely', $payload);
+        $response = $this->post('/webhooks/optimizely', $payload);
 
         // Assertions
         $response->assertStatus(400);
