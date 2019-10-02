@@ -1,6 +1,6 @@
 <?php
 return [
     'disk' => env('OPTIMIZELY_DISK'),
-    'path' => env('OPTIMIZELY_DATAFILE_PATH'),
+    'filepath' => env('OPTIMIZELY_DATAFILE_FILEPATH'),
     'webhook_secret' => env('OPTIMIZELY_WEBHOOK_SECRET'),
 ];
