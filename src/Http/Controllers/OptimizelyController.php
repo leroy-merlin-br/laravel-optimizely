@@ -1,11 +1,25 @@
 <?php
+
 namespace App\Http\Controllers;
 
+use Exception;
+use Illuminate\Contracts\Config\Repository;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class OptimizelyController extends BaseController
 {
+    /**
+     * @var Repository
+     */
+    private $config;
+
+    public function __construct(Repository $config)
+    {
+        $this->config = $config;
+    }
+
     public function webhook(Request $request): JsonResponse
     {
         $datafileUrl = $request->input('data')['cdn_url'];
@@ -14,17 +28,14 @@ class OptimizelyController extends BaseController
             return response()->json(['Could not get datafile URL'], 400);
         }
 
-        $datafileContents = file_get_contents($datafileUrl);
-
-        if (false === $datafileContents) {
+        try {
+            $datafileContents = file_get_contents($datafileUrl);
+        } catch (Exception $e) {
             return response()->json(['Could not get datafile contents'], 400);
         }
 
-        $filename = config('optimizely.path') . '/' . 'optimizely_datafile';
-
-        if (!file_put_contents($filename, $datafileContents)) {
-            return response()->json(['Could not save file :('], 500);
-        }
+        $filename = $this->config->get('optimizely.path') . '/' . 'optimizely_datafile';
+        Storage::disk($this->config->get('optimizely.disk'))->put($filename, $datafileContents);
 
         return response()->json([], 201);
     }
