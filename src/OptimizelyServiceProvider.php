@@ -1,11 +1,20 @@
 <?php
+namespace LeroyMerlin\Optimizely;
 
 use Illuminate\Support\ServiceProvider;
-use Optimizely\Optimizely;
 
 class OptimizelyServiceProvider extends ServiceProvider
 {
     public function register()
     {
+    }
+
+    public function boot()
+    {
+        $this->publishes([
+            __DIR__.'/config/optimizely.php' => config_path('optimizely.php'),
+        ]);
+
+        $this->loadRoutesFrom(__DIR__ . '/routes/routes.php');
     }
 }
