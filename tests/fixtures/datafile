@@ -1,3 +1,59 @@
 {
-  "data": "somestuff"
+  "version": "4",
+  "rollouts": [
+    {
+      "experiments": [
+        {
+          "status": "Running",
+          "audienceIds": [],
+          "variations": [
+            {
+              "variables": [],
+              "id": "123456789",
+              "key": "123456789",
+              "featureEnabled": true
+            }
+          ],
+          "id": "16737520751",
+          "key": "16737520751",
+          "layerId": "123456789",
+          "trafficAllocation": [
+            {
+              "entityId": "123456789",
+              "endOfRange": 10000
+            }
+          ],
+          "forcedVariations": {}
+        }
+      ],
+      "id": "123456789"
+    }
+  ],
+  "typedAudiences": [],
+  "anonymizeIP": true,
+  "projectId": "123456789",
+  "variables": [],
+  "featureFlags": [
+    {
+      "experimentIds": [],
+      "rolloutId": "66666",
+      "variables": [],
+      "id": "66666",
+      "key": "test_feature"
+    }
+  ],
+  "experiments": [],
+  "audiences": [
+    {
+      "conditions": "[\"or\", {\"match\": \"exact\", \"name\": \"$opt_dummy_attribute\", \"type\": \"custom_attribute\", \"value\": \"$opt_dummy_value\"}]",
+      "id": "$opt_dummy_audience",
+      "name": "Optimizely-Generated Audience for Backwards Compatibility"
+    }
+  ],
+  "groups": [],
+  "attributes": [],
+  "botFiltering": false,
+  "accountId": "123456789",
+  "events": [],
+  "revision": "1"
 }
