@@ -21,7 +21,7 @@ class OptimizelyControllerTest extends TestCase
             'data' => [
                 'revision' => 1,
                 'origin_url' => 'https://optimizely.s3.amazonaws.com/json/1234.json',
-                'cdn_url' => '../fixtures/invalid_datafile',
+                'cdn_url' => '../fixtures/invalid_path',
                 'environment' => 'Production'
             ]
         ];
