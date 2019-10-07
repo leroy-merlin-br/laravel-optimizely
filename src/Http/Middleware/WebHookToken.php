@@ -31,10 +31,10 @@ final class WebHookToken
     {
         $hash = hash_hmac(
             'sha1',
-            (string) $request->json(),
+            $request->getContent(),
             $this->config->get('optimizely.webhook_secret')
         );
-
+        
         if (! hash_equals("sha1={$hash}", $request->header('X-Hub-Signature'))) {
             throw new AuthenticationException();
         }

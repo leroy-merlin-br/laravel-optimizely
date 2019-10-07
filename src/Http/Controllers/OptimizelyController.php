@@ -17,13 +17,13 @@ class OptimizelyController extends BaseController
 
     public function __construct(Repository $config)
     {
+        $this->middleware(WebHookToken::class);
         $this->config = $config;
     }
 
     public function webhook(WebhookRequest $request): JsonResponse
     {
         try {
-
             $datafileContents = file_get_contents($request->getDatafileUrl());
         } catch (Exception $e) {
             return response()->json(['Could not get datafile contents'], 400);
