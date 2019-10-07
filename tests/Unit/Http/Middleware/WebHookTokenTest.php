@@ -21,7 +21,7 @@ class WebHookTokenTest extends TestCase
             ->andReturn('SECRET_KEY');
 
         $request
-            ->expects('getContent')
+            ->expects('json')
             ->once()
             ->andReturn('some_payload');
 
@@ -46,20 +46,20 @@ class WebHookTokenTest extends TestCase
             ->expects('get')
             ->once()
             ->with('optimizely.webhook_secret')
-            ->andReturn('SECRET_KEY');
+            ->andReturn('yIRFMTpsBcAKKRjJPCIykNo6EkNxJn_nq01-_r3S8i4');
 
         $request
-            ->expects('getContent')
+            ->expects('json')
             ->once()
-            ->andReturn('some_payload');
+            ->andReturn(
+                json_encode(json_decode(file_get_contents('../../../fixtures/valid_webhook_payload.json')))
+            );
 
         $request
             ->expects('header')
             ->once()
             ->with('X-Hub-Signature')
-            ->andReturnUsing(function () {
-                return sprintf("sha1=%s", hash_hmac('sha1', 'some_payload', 'SECRET_KEY'));
-            });
+            ->andReturn("sha1=470aa687e4674516708fb8299b1458855e19c69b");
 
         $result = $webHookToken->handle($request, function ($request) {
             return true;

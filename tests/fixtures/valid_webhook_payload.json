@@ -1,0 +1,11 @@
+{
+  "timestamp": 1558138293,
+  "project_id": 11387641093,
+  "data": {
+    "cdn_url": "https://cdn.optimizely.com/datafiles/QMVJcUKEJZFg8pQ2jhAybK.json",
+    "environment": "Production",
+    "origin_url": "https://optimizely.s3.amazonaws.com/datafiles/QMVJcUKEJZFg8pQ2jhAybK.json",
+    "revision": 13
+  },
+  "event": "project.datafile_updated"
+}

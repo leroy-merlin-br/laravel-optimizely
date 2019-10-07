@@ -1,6 +1,7 @@
 <?php
 namespace LeroyMerlin\Optimizely\Http\Controllers;
 
+use LeroyMerlin\Optimizely\Http\Middleware\WebHookToken;
 use LeroyMerlin\Optimizely\Http\Requests\WebhookRequest;
 use Exception;
 use Illuminate\Contracts\Config\Repository;
@@ -22,6 +23,7 @@ class OptimizelyController extends BaseController
     public function webhook(WebhookRequest $request): JsonResponse
     {
         try {
+
             $datafileContents = file_get_contents($request->getDatafileUrl());
         } catch (Exception $e) {
             return response()->json(['Could not get datafile contents'], 400);

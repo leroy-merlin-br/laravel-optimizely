@@ -7,7 +7,6 @@ namespace LeroyMerlin\Optimizely\Http\Middleware;
 use Closure;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Contracts\Config\Repository;
-use Illuminate\Http\Request;
 
 final class WebHookToken
 {
@@ -32,7 +31,7 @@ final class WebHookToken
     {
         $hash = hash_hmac(
             'sha1',
-            $request->getContent(),
+            (string) $request->json(),
             $this->config->get('optimizely.webhook_secret')
         );
 
