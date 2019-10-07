@@ -14,6 +14,7 @@ class OptimizelyControllerTest extends TestCase
 
     public function test_should_try_to_get_datafile_url_and_fail(): void
     {
+        config(['optimizely.webhook_secret' => 'verysecret']);
         $payload = [
             'project_id' => 1234,
             'timestamp' => 1468447113,
@@ -27,7 +28,9 @@ class OptimizelyControllerTest extends TestCase
         ];
 
         // Actions
-        $response = $this->post('/webhooks/optimizely', $payload);
+        $response = $this->post('/webhooks/optimizely', $payload, [
+            'X-Hub-Signature' => 'sha1=fec4ff24a565056b701bbd105f99c268f725451c'
+        ]);
 
         // Assertions
         $response->assertStatus(400);
@@ -39,6 +42,7 @@ class OptimizelyControllerTest extends TestCase
         // Set
         config(['optimizely.disk' => 'local']);
         config(['optimizely.path' => 'storage']);
+        config(['optimizely.webhook_secret' => 'verysecret']);
         Storage::fake();
 
         $payload = [
@@ -64,7 +68,9 @@ class OptimizelyControllerTest extends TestCase
 
 
         // Actions
-        $response = $this->post('/webhooks/optimizely', $payload);
+        $response = $this->post('/webhooks/optimizely', $payload, [
+            'X-Hub-Signature' => 'sha1=fec4ff24a565056b701bbd105f99c268f725451c'
+        ]);
 
         // Assertions
         $response->assertStatus(201);
