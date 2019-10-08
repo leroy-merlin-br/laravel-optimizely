@@ -17,11 +17,14 @@ Set the environment variables in your .env:
 
 - `OPTIMIZELY_WEBHOOK_SECRET`: The secret token that Optimizely generates for your webhook, this is used to validate incoming request and asure that it is secure, the request is going to fail otherwise
 
+## Webhook
+When you publish our package using `vendor:publish` a route will be created with the URI `webhooks/optimizely`, Optimizely will use this route to send Datafile updates, you'll have to create a Webhook in Optimizely settings and copy the secret token to the environment
 
+## Usage
+To further usage guides, go to [Optimizely's PHP SDK Doc](https://docs.developers.optimizely.com/full-stack/docs/example-usage-php)
 
 ## Contributing
-
-## Versioning
+Just fork it :)
 
 ## License
 [MIT License](https://github.com/leroy-merlin-br/laravel-optimizely/blob/master/LICENSE)
