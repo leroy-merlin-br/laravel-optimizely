@@ -8,7 +8,7 @@ Add the package to your project:
 `composer require leroy-merlin-br/laravel-optimizely`
 
 Publish the configs:
-`php artisan vendor:publish
+`php artisan vendor:publish`
 
 Set the environment variables in your .env:
 - `OPTIMIZELY_DISK`: Where the [Datafile](https://docs.developers.optimizely.com/full-stack/docs/get-the-datafile) is going to be stored (we recommend in-memory storage like Redis)
