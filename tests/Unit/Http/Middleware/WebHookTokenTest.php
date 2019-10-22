@@ -3,6 +3,7 @@ namespace LeroyMerlin\Optimizely\Http\Middleware;
 
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Contracts\Config\Repository;
+use Illuminate\Http\Request;
 use Mockery;
 use Orchestra\Testbench\TestCase;
 
@@ -11,7 +12,7 @@ class WebHookTokenTest extends TestCase
     public function test_handle_should_not_authenticate()
     {
         $config = Mockery::mock(Repository::class);
-        $request = Mockery::mock(Repository::class);
+        $request = Mockery::mock(Request::class);
         $webHookToken = new WebHookToken($config);
 
         $config
@@ -21,7 +22,7 @@ class WebHookTokenTest extends TestCase
             ->andReturn('SECRET_KEY');
 
         $request
-            ->expects('json')
+            ->expects('getContent')
             ->once()
             ->andReturn('some_payload');
 
@@ -39,7 +40,7 @@ class WebHookTokenTest extends TestCase
     public function test_handle_should_authenticate()
     {
         $config = Mockery::mock(Repository::class);
-        $request = Mockery::mock(Repository::class);
+        $request = Mockery::mock(Request::class);
         $webHookToken = new WebHookToken($config);
 
         $config
@@ -49,10 +50,10 @@ class WebHookTokenTest extends TestCase
             ->andReturn('yIRFMTpsBcAKKRjJPCIykNo6EkNxJn_nq01-_r3S8i4');
 
         $request
-            ->expects('json')
+            ->expects('getContent')
             ->once()
             ->andReturn(
-                json_encode(json_decode(file_get_contents('../../../fixtures/valid_webhook_payload.json')))
+                json_encode(json_decode(file_get_contents(__DIR__ . '/../../../fixtures/valid_webhook_payload.json')))
             );
 
         $request

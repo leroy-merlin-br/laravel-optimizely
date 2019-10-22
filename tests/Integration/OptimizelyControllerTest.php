@@ -41,8 +41,9 @@ class OptimizelyControllerTest extends TestCase
     {
         // Set
         config(['optimizely.disk' => 'local']);
-        config(['optimizely.path' => 'storage']);
         config(['optimizely.webhook_secret' => 'verysecret']);
+        config(['optimizely.filepath' => 'storage/optimizely_datafile']);
+
         Storage::fake();
 
         $payload = [

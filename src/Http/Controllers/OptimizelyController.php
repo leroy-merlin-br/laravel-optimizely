@@ -29,8 +29,7 @@ class OptimizelyController extends BaseController
             return response()->json(['Could not get datafile contents'], 400);
         }
 
-        $filename = $this->config->get('optimizely.path') . '/' . 'optimizely_datafile';
-        Storage::disk($this->config->get('optimizely.disk'))->put($filename, $datafileContents);
+        Storage::disk($this->config->get('optimizely.disk'))->put($this->config->get('optimizely.filepath'), $datafileContents);
 
         return response()->json([], 201);
     }
