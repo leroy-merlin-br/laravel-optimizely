@@ -20,7 +20,5 @@ class OptimizelyServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/config/optimizely.php' => config_path('optimizely.php'),
         ]);
-
-        $this->loadRoutesFrom(__DIR__ . '/routes/routes.php');
     }
 }
