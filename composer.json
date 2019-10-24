@@ -17,8 +17,7 @@
     "ext-json": "*",
     "illuminate/config": "^5.7.0 || ^6.0",
     "illuminate/support": "^5.7.0 || ^6.0",
-    "optimizely/optimizely-sdk": "^3.2",
-    "ext-redis": "*"
+    "optimizely/optimizely-sdk": "^3.2"
   },
   "require-dev": {
     "orchestra/testbench": "^4.0",
