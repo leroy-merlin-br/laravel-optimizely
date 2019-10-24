@@ -9,7 +9,7 @@ class OptimizelyServiceProvider extends ServiceProvider
 {
     public function register()
     {
-        $this->app->singleton(
+        $this->app->bind(
             Optimizely::class,
             Closure::fromCallable(new OptimizelyFactory())
         );
