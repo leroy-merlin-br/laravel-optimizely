@@ -36,5 +36,11 @@
       "name": "Alexandre Ferreira Nogueira (@aleferrieranogueira)",
       "email": "ale.ferreiranogueira@gmail.com"
     }
-  ]
+  ],
+  "config": {
+    "preferred-install": "dist",
+    "sort-packages": true,
+    "optimize-autoloader": true
+  },
+  "prefer-stable": true
 }
