@@ -2,12 +2,6 @@
   "name": "leroy-merlin-br/laravel-optimizely",
   "description": "A Laravel wrapper for the Optimizely SDK",
   "type": "library",
-  "repositories": [
-    {
-      "type": "vcs",
-      "url": "https://github.com/leroy-merlin-br/php-sdk"
-    }
-  ],
   "autoload": {
     "psr-4": {
       "LeroyMerlin\\Optimizely\\": "src/"
@@ -23,7 +17,7 @@
     "ext-json": "*",
     "illuminate/config": "^5.7.0 || ^6.0 || ^7.0|| ^8.0",
     "illuminate/support": "^5.7.0 || ^6.0 || ^7.0|| ^8.0",
-    "optimizely/optimizely-sdk": "dev-update-monolog"
+    "optimizely/optimizely-sdk": "^3.9"
   },
   "require-dev": {
     "orchestra/testbench": "^6.0",
