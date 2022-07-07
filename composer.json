@@ -2,6 +2,7 @@
   "name": "leroy-merlin-br/laravel-optimizely",
   "description": "A Laravel wrapper for the Optimizely SDK",
   "type": "library",
+  "abandoned": true,
   "autoload": {
     "psr-4": {
       "LeroyMerlin\\Optimizely\\": "src/"
